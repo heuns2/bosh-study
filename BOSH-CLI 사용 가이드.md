@@ -6,7 +6,7 @@
 	* [bosh create-env](#8)
 	* [bosh alias-env](#9)
 	* [bosh environment](#10)
-	* [bosh delete-env](#11)
+	* [bosh delete-env](#11) 
 
 
 1. [BOSH CLI - Session](#12)
