@@ -23,7 +23,7 @@ Succeeded
 - Release Director의 Tree 구조를 확인 한다.
 ```
 $ cd {release_name}
-$ tree .
+$ tree . 
 .
 ├── config
 │   ├── blobs.yml
