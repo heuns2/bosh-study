@@ -30,7 +30,7 @@
 	* [bosh reset-release](#26)
 
 1. [BOSH CLI - Release blobs](#27)
-	* [bosh blob](#28)
+	* [bosh blob](#28) 
 	* [bosh add-blob](#29)
 	* [bosh reomove-blob](#30)
 	* [bosh sync-blob](#31)
