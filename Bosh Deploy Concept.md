@@ -9,7 +9,7 @@
 	- Cloud Config 업로드
 	- Manifest File 작성
 	- Stemcell 업로드
-	- Release 업로드
+	- Release 업로드 
 	- Deploy 실행
 
 ### 1.1. Cloud Config 업로드
