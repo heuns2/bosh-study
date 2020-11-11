@@ -11,9 +11,9 @@
 
 ### 1.3. 내부 점프박스 설정 가이드
 
-[https://bosh.io/docs/cli-v2-install/](https://bosh.io/docs/cli-v2-install/) 
+[https://bosh.io/docs/cli-v2-install/](https://bosh.io/docs/cli-v2-install/)
 
-**※ Dojo 실습에서는 External, Internal jumpbox 2개의 서버를 구성하여 외부와 통신이 가능한 External jumpbox에서 패키지를 다운로드 후 Internal jumpbox 서버에 파일을 복사하여 구성하였다.**  
+**※ Dojo 실습에서는 External, Internal jumpbox 2개의 서버를 구성하여 외부와 통신이 가능한 External jumpbox에서 패키지를 다운로드 후 Internal jumpbox 서버에 파일을 복사하여 구성하였다.**
 
 ## 2. bosh deploy manifest &dependency & binary 설치
 
