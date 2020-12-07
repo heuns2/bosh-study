@@ -3,12 +3,12 @@ name: nginx
 
 releases:
 - name: nginx
-  version: latest
+  version: 1.16
 
 stemcells:
 - alias: ubuntu
   os: ubuntu-xenial
-  version: "3468"
+  version: latest
 
 instance_groups:
 - name: nginx
