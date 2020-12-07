@@ -1,5 +1,5 @@
 ---
-name: nginx-posco
+name: nginx-test
 
 releases:
 - name: nginx
