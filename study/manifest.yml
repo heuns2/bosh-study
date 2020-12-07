@@ -1,0 +1,78 @@
+---
+name: nginx
+
+releases:
+- name: nginx
+  version: latest
+
+stemcells:
+- alias: ubuntu
+  os: ubuntu-xenial
+  version: "456.16"
+
+instance_groups:
+- name: nginx
+  instances: 1
+  azs: [ test_azs ]
+  vm_type: test_vm_type
+  persistent_disk_type: test_disk_type
+  stemcell: ubuntu
+  networks:
+  - name: test_network_type
+  jobs:
+  - name: nginx
+    release: nginx
+    properties:
+      nginx_conf: |
+        user nobody vcap; # group vcap can read most directories
+        worker_processes  1;
+        error_log /var/vcap/sys/log/nginx/error.log   info;
+        events {
+          worker_connections  1024;
+        }
+        http {
+          include /var/vcap/packages/nginx/conf/mime.types;
+          default_type  application/octet-stream;
+          sendfile        on;
+          ssi on;
+          keepalive_timeout  65;
+          server_names_hash_bucket_size 64;
+          server {
+            server_name _; # invalid value which will never trigger on a real hostname.
+            listen *:80;
+            # FIXME: replace all occurrences of 'example.com' with your server's FQDN
+            access_log /var/vcap/sys/log/nginx/example.com-access.log;
+            error_log /var/vcap/sys/log/nginx/example.com-error.log;
+            root /var/vcap/data/nginx/document_root;
+            index index.shtml;
+          }
+        }
+      pre_start: |
+        #!/bin/bash -ex
+        echo "강제  ERROR CODE 삽입"
+        exit 1;
+        NGINX_DIR=/var/vcap/data/nginx/document_root
+        mkdir -p /var/vcap/data/nginx/document_root-2
+        if [ ! -d $NGINX_DIR ]; then
+          mkdir -p $NGINX_DIR
+          cd $NGINX_DIR
+          cat > index.shtml <<EOF
+            <html><head><title>BOSH Nginx</title>
+            </head><body>
+            <h2>Welcome to POSCO</h2>
+            </body></html>
+        EOF
+        fi
+        cd /var/vcap/data/nginx/document_root-2
+        cat > index.shtml <<EOF
+          <html><head><title>BOSH Nginx</title>
+          </head><body>
+          <h2>Welcome to POSCO Platform Team</h2>
+          </body></html>
+        EOF
+update:
+  canaries: 1
+  max_in_flight: 1
+  serial: false
+  canary_watch_time: 1000-60000
+  update_watch_time: 1000-60000
